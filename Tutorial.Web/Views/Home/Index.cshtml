@@ -1,0 +1,35 @@
+﻿@model Tutorial.Web.ViewModels.HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<h3>不使用partial view</h3>
+<ul>
+    @foreach (var s in Model.Students)
+    {
+        <li>
+            @s.Name  (@s.Age)
+            <a asp-action="Detail" asp-route-id="@s.Id">明细</a>
+        </li>
+    }
+</ul>
+
+<hr />
+<h3>使用partial view</h3>
+@*
+    @Html.Partial("_StudentTable", Model.Students)
+*@
+<partial name="_StudentTable" , for="Students" />
+
+<hr />
+
+<div>
+    <a asp-action="Create">创建学生</a>
+</div>
+
+@section bottom
+{
+    <hr />
+}

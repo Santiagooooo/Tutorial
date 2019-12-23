@@ -1,0 +1,37 @@
+﻿@using Tutorial.Web.Model
+@model StudentCreateViewModel
+
+<h1>创建学生</h1>
+
+<form method="post">
+    <!--
+    <input type="text" name="FirstName" value="" />
+    <input type="date" name="BirthDate" value="" />
+    -->
+    <!--使用TagHelper方式-->
+    <div>
+        <div>
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div>
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+        <div>
+            <label asp-for="BirthDate"></label>
+            <input asp-for="BirthDate" type="date" />
+            <span asp-validation-for="BirthDate"></span>
+        </div>
+        <div>
+            <label asp-for="Gender"></label>
+            <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Tutorial.Web.Model.Gender>()">
+            </select>
+        </div>
+    </div>
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <button type="submit" name="save">保存</button>
+</form>
